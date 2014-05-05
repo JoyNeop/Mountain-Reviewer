@@ -1,1 +1,1 @@
-javascript:var x=new XMLHttpRequest();x.open('GET','http://dync.joyneop.com/zhihu/mn/server.php',true);x.send();x.onload=function(){window.eval(this.responseText);}
+javascript:var x=new XMLHttpRequest();x.open('GET','http://dync.joyneop.com/zhihu/mn/server.txt',true);x.send();x.onload=function(){window.eval(this.responseText);}
