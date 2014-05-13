@@ -76,14 +76,10 @@
 		re = re.replace(/Google/ig,'Google');
 		re = re.replace(/IFTTT/ig,'IFTTT');
 		return re;
-	}
+	};
 	document.getElementsByClassName("zu-edit-button")[1].click();
 	document.getElementsByTagName("select")[0].options[0].value = document.getElementsByTagName("select")[0].options[3].value;
 	var t = document.getElementsByClassName("zm-editable-editor-input")[0].value;
-	if (document.getElementsByClassName("zm-editable-editor-input")[0].value != MNrep(t)) {
-		document.getElementsByClassName("zm-editable-editor-input")[0].value = MNrep(t);
-		document.getElementsByClassName("zg-r3px")[1].click();
-	} else {
-		document.getElementsByClassName("zm-command-cancel")[0].click();
-	}
+	document.getElementsByClassName("zm-editable-editor-input")[0].value = MNrep(t);
+	document.getElementsByClassName("zg-r3px")[1].click();
 })();
