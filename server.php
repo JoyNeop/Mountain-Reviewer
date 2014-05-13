@@ -8,5 +8,5 @@ curl_setopt($curl, CURLOPT_HEADER, 0);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $data = curl_exec($curl);
 curl_close($curl);
-var_dump($data);
+echo $data;
 ?>
