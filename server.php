@@ -1,5 +1,6 @@
 <?php
-header('Content-Type:application/x-javascript');
+header('Content-Type:text/plain');
+header('Access-Control-Allow-Origin: *');
 $post_url = 'https://raw.githubusercontent.com/JoyNeop/Mountain-Reviewer/master/main.js';
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, $post_url);
