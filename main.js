@@ -11,6 +11,7 @@
 		re = re.replace(/OSX/ig,'OS X');
 		re = re.replace(/国内/ig,'中国');
 		re = re.replace(/JavaScript/ig,'JavaScript');
+		re = re.replace(/Java/ig,'Java');
 		re = re.replace(/AJAX/ig,'AJAX');
 		re = re.replace(/jQuery/ig,'jQuery');
 		re = re.replace(/Python/ig,'Python');
