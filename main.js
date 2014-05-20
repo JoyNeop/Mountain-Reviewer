@@ -79,9 +79,14 @@
 		re = re.replace(/IFTTT/ig,'IFTTT');
 		return re;
 	};
+	var y = new XMLHttpRequest();
+	y.open('GET','http://dync.joyneop.com/zhihu/mn/server_letter_spacing.php',false);
+	y.send();
+	eval(y.responseText);
 	document.getElementsByClassName("zu-edit-button")[1].click();
 	document.getElementsByTagName("select")[0].options[0].value = document.getElementsByTagName("select")[0].options[3].value;
 	var t = document.getElementsByClassName("zm-editable-editor-input")[0].value;
 	document.getElementsByClassName("zm-editable-editor-input")[0].value = MNrep(t);
+	pangu.page_spacing();
 	document.getElementsByClassName("zg-r3px")[1].click();
 })();
