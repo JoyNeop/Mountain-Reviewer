@@ -84,7 +84,8 @@
 	y.send();
 	eval(y.responseText);
 	document.getElementsByClassName("zu-edit-button")[1].click();
-	document.getElementsByTagName("select")[0].options[0].value = document.getElementsByTagName("select")[0].options[3].value;
+	// document.getElementsByTagName("select")[0].options[0].value = document.getElementsByTagName("select")[0].options[3].value;
+	document.getElementsByTagName("select")[0].options[0].value = "错别字去死 http://zhuanlan.zhihu.com/pointless/19736685";
 	var t = document.getElementsByClassName("zm-editable-editor-input")[0].value;
 	document.getElementsByClassName("zm-editable-editor-input")[0].value = MNrep(t);
 	pangu.page_spacing();
