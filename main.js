@@ -53,6 +53,7 @@
 		re = re.replace(/iPhoto/ig,'iPhoto');
 		re = re.replace(/iMovie/ig,'iMovie');
 		re = re.replace(/GarageBand/ig,'GarageBand');
+		re = re.replace(/iOS/ig,'iOS');
 		re = re.replace(/iPad/ig,'iPad');
 		re = re.replace(/iPhone/ig,'iPhone');
 		re = re.replace(/iPhone4/ig,'iPhone 4');
