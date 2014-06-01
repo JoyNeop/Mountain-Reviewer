@@ -75,6 +75,7 @@
 		re = re.replace(/Quora/ig,'Quora');
 		re = re.replace(/Twitter/ig,'Twitter');
 		re = re.replace(/Facebook/ig,'Facebook');
+		re = re.replace(/Instagram/ig,'Instagram');
 		re = re.replace(/Google/ig,'Google');
 		re = re.replace(/YouTube/ig,'YouTube');
 		re = re.replace(/IFTTT/ig,'IFTTT');
