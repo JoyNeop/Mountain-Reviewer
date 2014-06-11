@@ -3,7 +3,7 @@
 <?php
 header('Content-Type:text/plain');
 header('Access-Control-Allow-Origin: *');
-$post_url = 'https://raw.githubusercontent.com/vinta/paranoid-auto-spacing/master/src/pangu.js';
+$post_url = 'https://raw.githubusercontent.com/NeopStudio/paranoid-auto-spacing/master/src/pangu.js';
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, $post_url);
 curl_setopt($curl, CURLOPT_HEADER, 0);
