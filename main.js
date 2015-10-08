@@ -1,96 +1,87 @@
-(function(){
-	function MNrep(x) {
-		var re = x;
-		re = re.replace(/WordPress/ig,'WordPress');
-		re = re.replace(/Wi-Fi/ig,'Wi-Fi');
-		re = re.replace(/WiFi/ig,'Wi-Fi');
-		re = re.replace(/WLAN/ig,'WLAN');
-		re = re.replace(/Mac Book/ig,'MacBook');
-		re = re.replace(/Mac Air/ig,'MacBook Air');
-		re = re.replace(/OS X/ig,'OS X');
-		re = re.replace(/OSX/ig,'OS X');
-		re = re.replace(/国内/ig,'中国');
-		re = re.replace(/JavaScript/ig,'JavaScript');
-		re = re.replace(/Java/ig,'Java');
-		re = re.replace(/AJAX/ig,'AJAX');
-		re = re.replace(/jQuery/ig,'jQuery');
-		re = re.replace(/Python/ig,'Python');
-		re = re.replace(/Ruby/ig,'Ruby');
-		re = re.replace(/Perl/ig,'Perl');
-		re = re.replace(/GNU/ig,'GNU');
-		re = re.replace(/Photoshop/ig,'Photoshop');
-		re = re.replace(/Pixelmator/ig,'Pixelmator');
-		re = re.replace(/Android/ig,'Android');
-		re = re.replace(/Evernote/ig,'Evernote');
-		re = re.replace(/Linux/ig,'Linux');
-		re = re.replace(/ThinkPad/ig,'ThinkPad');
-		re = re.replace(/MacBook Air/ig,'MacBook Air');
-		re = re.replace(/MacBookAir/ig,'MacBook Air');
-		re = re.replace(/MacBook Pro/ig,'MacBook Pro');
-		re = re.replace(/MacBookPro/ig,'MacBook Pro');
-		re = re.replace(/MacBook/ig,'MacBook');
-		re = re.replace(/Mac Pro/ig,'Mac Pro');
-		re = re.replace(/MacPro/ig,'Mac Pro');
-		re = re.replace(/Mac mini/ig,'Mac mini');
-		re = re.replace(/Macmini/ig,'Mac mini');
-		re = re.replace(/iMac/ig,'iMac');
-		re = re.replace(/Mac/ig,'Mac');
-		re = re.replace(/iTunes Store/ig,'iTunes Store');
-		re = re.replace(/iTunes/ig,'iTunes');
-		re = re.replace(/iCloud/ig,'iCloud');
-		re = re.replace(/App Store/ig,'App Store');
-		re = re.replace(/Mac App Store/ig,'Mac App Store');
-		re = re.replace(/Retina display/ig,'Retina display');
-		re = re.replace(/Safari/ig,'Safari');
-		re = re.replace(/Chrome/ig,'Chrome');
-		re = re.replace(/Firefox/ig,'Firefox');
-		re = re.replace(/Opera/ig,'Opera');
-		re = re.replace(/Logic Pro/ig,'Logic Pro');
-		re = re.replace(/Logic Pro X/ig,'Logic Pro X');
-		re = re.replace(/Aperture/ig,'Aperture');
-		re = re.replace(/Final Cut Pro/ig,'Final Cut Pro');
-		re = re.replace(/Final Cut/ig,'Final Cut');
-		re = re.replace(/iPhoto/ig,'iPhoto');
-		re = re.replace(/iMovie/ig,'iMovie');
-		re = re.replace(/GarageBand/ig,'GarageBand');
-		re = re.replace(/iOS/ig,'iOS');
-		re = re.replace(/iPad/ig,'iPad');
-		re = re.replace(/iPhone/ig,'iPhone');
-		re = re.replace(/iPhone4/ig,'iPhone 4');
-		re = re.replace(/iPhone 4s/ig,'iPhone 4s');
-		re = re.replace(/iPhone4s/ig,'iPhone 4s');
-		re = re.replace(/iPhone5/ig,'iPhone 5');
-		re = re.replace(/iPhone 5s/ig,'iPhone 5s');
-		re = re.replace(/iPhone5s/ig,'iPhone 5s');
-		re = re.replace(/iPod/ig,'iPod');
-		re = re.replace(/itouch/ig,'iPod touch');
-		re = re.replace(/iPod touch/ig,'iPod touch');
-		re = re.replace(/iPod nano/ig,'iPod nano');
-		re = re.replace(/iPod classic/ig,'iPod classic');
-		re = re.replace(/iPod shuffle/ig,'iPod shuffle');
-		re = re.replace(/iPod/ig,'iPod');
-		re = re.replace(/GitHub/ig,'GitHub');
-		re = re.replace(/GoAgentX/ig,'GoAgentX');
-		re = re.replace(/GoAgent/ig,'GoAgent');
-		re = re.replace(/Quora/ig,'Quora');
-		re = re.replace(/Twitter/ig,'Twitter');
-		re = re.replace(/Facebook/ig,'Facebook');
-		re = re.replace(/Instagram/ig,'Instagram');
-		re = re.replace(/Google/ig,'Google');
-		re = re.replace(/YouTube/ig,'YouTube');
-		re = re.replace(/IFTTT/ig,'IFTTT');
-		re = re.replace(/PDF/ig,'PDF');
-		return re;
+(function () {
+	var processText = function (inputText) {
+		var tmp = inputText;
+
+		// Correct typos
+		var typoDict = [
+			// Electronic devices
+			[ /Mac/ig, 'Mac' ],
+			[ /Mac\s?Book/ig, 'MacBook' ],
+			[ /Mac\s?Book\s?Pro/ig , 'MacBook Pro' ],
+			[ /Mac\s?Book\s?Air/ig , 'MacBook Air' ],
+			[ /Mac\s?Pro/ig , 'Mac Pro' ],
+			[ /iMac/ig , 'iMac' ],
+			[ /iPod/ig , 'iPod' ],
+			[ /iPod\s?touch/ig , 'iPod $1' ],
+			[ /iPod\s?nano/ig , 'iPod $1' ],
+			[ /iPod\s?shuffle/ig , 'iPod $1' ],
+			[ /iPod\s?classic/ig , 'iPod $1' ],
+			[ /iPad/ig , 'iPad' ],
+			[ /iPhone/ig , 'iPhone' ],
+			[ /iPhone\s?(\d*)/ig , 'iPhone $1' ],
+			[ /iPhone\s?(\d*)\s?s/ig , 'iPhone $1s' ],
+			[ /iPhone\s?(\d*)\s?Plus/ig , 'iPhone $1 Plus' ],
+			[ /iPhone\s?(\d*)\s?s\s?Plus/ig , 'iPhone $1s Plus' ],
+			[ /Surface\s?Book/ig , 'Surface Book' ],
+			[ /Surface\s?Pro/ig , 'Surface Pro' ],
+			[ /Surface\s?Pro\s?(\d)/ig , 'Surface Pro $1' ],
+			// Softwares
+			[ /OS\s?X/ig , 'OS X' ],
+			[ /Windows/ig , 'Windows' ],
+			[ /Android/ig , 'Android' ],
+			[ /Linux/ig , 'Linux' ],
+			[ /Photo\s?shop/ig , 'Photoshop' ],
+			[ /Piexlmator/ig , 'Piexlmator' ],
+			[ /Win\s?(\d*?)/ig , 'Windows $1' ],
+			[ /Windows\s?(\d*?)/ig , 'Windows $1' ],
+			[ /Safari/ig , 'Safari' ],
+			[ /Chrome/ig , 'Chrome' ],
+			[ /Firefox/ig , 'Firefox' ],
+			[ /Opera/ig , 'Opera' ],
+			[ /iTunes/ig , 'iTunes' ],
+			[ /App\s?Store/ig , 'App Store' ],
+			[ /Shadow\s?socks/ig , 'Shadowsocks' ],
+			[ /GoAgent(X|)/ig , 'GoAgent$1' ],
+			// Websites and Services
+			[ /Twitter/ig, 'Twitter'],
+			[ /Facebook/ig, 'Facebook'],
+			[ /Quora/ig, 'Quora'],
+			[ /Instagram/ig, 'Instagram'],
+			[ /Google/ig, 'Google'],
+			[ /You\s?Tube/ig, 'YouTube'],
+			[ /Wikipedia/ig, 'Wikipedia'],
+			// Programming Languages
+			[ /JavaScript/ig, 'JavaScript' ],
+			[ /Python/ig, 'Python' ],
+			[ /Perl/ig, 'Perl' ],
+			[ /Ruby/ig, 'Ruby' ],
+			[ /Lisp/ig, 'Lisp' ],
+			[ /Prolog/ig, 'Prolog' ],
+			[ /Haskell/ig, 'Haskell' ],
+			// Misc
+			[ /CPU/ig, 'CPU' ],
+			[ /PDF/ig, 'PDF' ]
+		];
+		typoDict.forEach(function (v) {
+			tmp = tmp.replace(v[0], v[1]);
+		});
+
+		// Add spaces between CJK and Latin
+		tmp = tmp.replace(/([^\w\s])(\w)/ig, '$1 $2').replace(/(\w)([^\w\s])/ig, '$1 $2').replace(/  /g, ' ').replace(/(（|）|，|、|。|；|：)\s(\w)/, '$1 $2').replace(/(\w)\s(（|）|，|、|。|；|：)/, '$1 $2').replace(/\s*？$/, '？').replace(/\?$/, '？');
+
+		// All done
+		return tmp;
 	};
-	var y = new XMLHttpRequest();
-	y.open('GET','http://dync.joyneop.com/zhihu/mn/server_letter_spacing.php',false);
-	y.send();
-	eval(y.responseText);
-	document.getElementsByClassName("zu-edit-button")[1].click();
-	// document.getElementsByTagName("select")[0].options[0].value = document.getElementsByTagName("select")[0].options[3].value;
-	document.getElementsByTagName("select")[0].options[0].value = "共创没有错别字的知乎 http://zhuanlan.zhihu.com/pointless/19736685";
-	var t = document.getElementsByClassName("zm-editable-editor-input")[0].value;
-	document.getElementsByClassName("zm-editable-editor-input")[0].value = MNrep(t);
-	pangu.page_spacing();
-	document.getElementsByClassName("zg-r3px")[1].click();
+
+	document.querySelectorAll('.zu-edit-button')[1].click();
+	document.querySelectorAll('.zm-editable-editor-input')[0].value = processText(document.querySelectorAll('.zm-editable-editor-input')[0].value);
+	document.getElementsByTagName("select")[0].options[0].value = "共创没有 typo 的知乎";
+	document.querySelectorAll('.zg-r3px.zg-btn-blue')[0].click();
+
+	// Add comment
+	document.querySelectorAll('.toggle-comment.meta-item')[0].click();
+	setTimeout(function(){
+		document.querySelectorAll('.zm-comment-editable.editable')[0].innerHTML = '已修正问题标题中的拼写错误并在 CJK 与西文之间加了空格。使用 https://github.com/joyneop/mountain-reviewer 自动调整。（beta）<br>（自动评论）';
+		document.querySelectorAll('.zm-comment-form.zm-comment-box-ft .zg-right.zg-btn-blue')[0].click()
+	}, 1200);
 })();

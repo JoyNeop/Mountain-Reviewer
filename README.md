@@ -8,7 +8,9 @@
 
 ## Road map
 
-- [x] Bookmarklet
+- [ ] Bookmarklet
+- [ ] Safari 插件
+- [ ] Chrome 插件
 - [ ] VPS 上的 bot，监控特定话题的动态并改正
 
 ## License
