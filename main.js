@@ -67,7 +67,7 @@
 		});
 
 		// Add spaces between CJK and Latin
-		tmp = tmp.replace(/([^\w\s])(\w)/ig, '$1 $2').replace(/(\w)([^\w\s])/ig, '$1 $2').replace(/  /g, ' ').replace(/(（|）|，|、|。|；|：)\s(\w)/, '$1 $2').replace(/(\w)\s(（|）|，|、|。|；|：)/, '$1 $2').replace(/\s*？$/, '？').replace(/\?$/, '？');
+		tmp = tmp.replace(/([^\w\s])(\w)/ig, '$1 $2').replace(/(\w)([^\w\s\.\;\/\@])/ig, '$1 $2').replace(/  /g, ' ').replace(/(（|）|，|、|。|；|：)\s(\w)/, '$1 $2').replace(/(\w)\s(（|）|，|、|。|；|：)/, '$1 $2').replace(/\s*？$/, '？').replace(/\?$/, '？');
 
 		// All done
 		return tmp;
